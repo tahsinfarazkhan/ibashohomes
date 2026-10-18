@@ -15,11 +15,11 @@ const currentYear = new Date().getFullYear();
 
             <address class="footer-nav-list contact-info">
                 <p class="phone">
-                    <span class="label">T.</span>
+                    <span class="label"></span>
                     <a href=`tel:${SITE.TELEPHONE}`>{SITE.TELEPHONE}</a>
                 </p>
                 <p class="email">
-                    <span class="label">E.</span>
+                    <span class="label"></span>
                     <a href=`mailto:${SITE.EMAIL}`>{SITE.EMAIL}</a>
                 </p>
             </address>
@@ -49,31 +49,7 @@ const currentYear = new Date().getFullYear();
                 </ul>
             </div>
 
-            <div class="footer-nav-section">
-                <h2 class="headline footer-heading">Social Media</h2>
-                <ul class="footer-nav-list social-links-list">
-                    {
-                        SOCIALS.map((social) => (
-                            <>
-                                <li class="social-item">
-                                    <a
-                                        href={social.HREF}
-                                        aria-label={social.LABEL}
-                                        class="footer-link social-link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Fragment
-                                            set:html={socialIcons[social.ICON]}
-                                        />
-                                        {social.NAME}
-                                    </a>
-                                </li>
-                            </>
-                        ))
-                    }
-                </ul>
-            </div>
+            
 
             <div class="footer-nav-section">
                 <h2 class="headline footer-heading">Legal & Press</h2>
@@ -101,9 +77,6 @@ const currentYear = new Date().getFullYear();
     <div class="footer footer-secondary">
         <div class="copyright">
             <p>&copy; {SITE.COMPANY_NAME} {currentYear}.</p>
-        </div>
-        <div class="location">
-            <p>Based in Jamshedpur, Jharkhand.</p>
         </div>
     </div>
 </footer>
