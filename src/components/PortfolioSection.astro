@@ -2,9 +2,9 @@
 import BaseSwiper from "./BaseSwiper.astro";
 import { Image } from "astro:assets";
 import before1Image from "/src/assets/images/before1.png";
-import after1Image from "/src/assets/images/after1.png";
+import after1Image from "/src/assets/images/after1.mp4";
 import before2Image from "/src/assets/images/before2.png";
-import after2Image from "/src/assets/images/after2.png";
+import after2Image from "/src/assets/images/after2.mp4";
 
 const projects = [
     {
@@ -64,14 +64,20 @@ const projects = [
             {
                 projects.map((project) => (
                     <div class="swiper-slide">
-                        <div class="project-image">
-                            <Image
-                                class="image"
-                                src={project.images.after.src}
-                                alt={project.images.after.alt}
-                                width={1144}
-                                height={800}
-                            />
+                        <div class="project-media">
+                            <video
+                                class="slide-video"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                poster={project.video?.poster || project.images?.after?.src}
+                            >
+                                <source
+                                    src={project.video?.src || project.images?.after?.src}
+                                    type="video/mp4"
+                                />
+                            </video>
                         </div>
                         <div class="project-info">
                             <div class="info-section">
@@ -124,14 +130,16 @@ const projects = [
         transform: scale(0.75);
     }
 
-    .project-image {
+    .project-media {
         position: relative;
         min-height: 25rem;
+        height: 100%;
         overflow: hidden;
         border-radius: var(--radius-sm, 0.5rem);
+        background-color: #000;
     }
 
-    .image {
+    .slide-video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -170,6 +178,10 @@ const projects = [
             grid-template-columns: 1fr;
             gap: var(--px-32);
         }
+
+        .project-media {
+            min-height: 18rem;
+        }
     }
 </style>
 
@@ -188,6 +200,27 @@ const projects = [
                 clickable: true,
             },
         });
+
+        // Helper to control playback on slide change
+        const manageVideoPlayback = () => {
+            portfolioSwiper.slides.forEach((slide: HTMLElement, idx: number) => {
+                const vid = slide.querySelector<HTMLVideoElement>("video");
+                if (!vid) return;
+
+                if (idx === portfolioSwiper.activeIndex) {
+                    vid.play().catch(() => {});
+                } else {
+                    vid.pause();
+                    vid.currentTime = 0;
+                }
+            });
+        };
+
+        // Listen for slide movements
+        portfolioSwiper.on("slideChange", manageVideoPlayback);
+
+        // Ensure active slide video starts playing on load
+        manageVideoPlayback();
 
         return () => {
             portfolioSwiper.destroy();
