@@ -1,8 +1,8 @@
 import type { Site, Socials } from './types';
 
 export const SITE: Site = {
-  COMPANY_NAME: 'One Space Away',
-  LEGAL_NAME: 'One Space Away Interiors, LLC',
+  COMPANY_NAME: 'Ibasho Homes',
+  LEGAL_NAME: 'Ibasho Homes Private Limited',
   TITLE: 'Home, just the way you like.',
   DESCRIPTION: 'Discover the joy of living in a space that feels truly yours.',
   CANONICAL_URL: import.meta.env.DEV
@@ -10,8 +10,8 @@ export const SITE: Site = {
     : 'https://one-space-away-html.pages.dev',
   LOCALE: 'en',
   TELEPHONE: '(310) 555-2389',
-  EMAIL: 'info@onespaceaway.com',
-  ADDRESS: '456 Camden Drive, Suite 300, Beverly Hills, CA 90210',
+  EMAIL: 'hello@ibasho.homes',
+  ADDRESS: 'Mango, Jamshedpur, Jharkhand - 831012',
 
   OG_IMAGE: '/og-image.webp',
 
