@@ -7,11 +7,11 @@ export const SITE: Site = {
   DESCRIPTION: 'Live Well.',
   CANONICAL_URL: import.meta.env.DEV
     ? 'http://localhost:4321'
-    : 'https://one-space-away-html.pages.dev',
+    : 'https://ibasho.homes',
   LOCALE: 'en',
   TELEPHONE: '(310) 555-2389',
   EMAIL: 'hello@ibasho.homes',
-  ADDRESS: 'Mango, Jamshedpur, Jharkhand - 831012',
+  ADDRESS: 'Jamshedpur, Jharkhand - 831012',
 
   OG_IMAGE: '/og-image.webp',
 
