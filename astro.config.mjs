@@ -39,7 +39,7 @@ export default defineConfig({
       directives: [
         "default-src 'self'",
         "object-src 'self'",
-        "connect-src 'self'",
+        "connect-src 'self' https://api.web3forms.com",
         "base-uri 'self'",
         "img-src 'self' https://res.cloudinary.com/dellp9a4z/ data:",
         "media-src 'self' https://res.cloudinary.com/dellp9a4z/",
@@ -47,7 +47,7 @@ export default defineConfig({
         "frame-src 'self' https://www.google.com/",
         "worker-src 'self'",
         "manifest-src 'none'",
-        "form-action 'self'",
+        "form-action 'self' https://api.web3forms.com",
       ],
       styleDirective: {
         resources: ["'self'", "'unsafe-hashes'"],
