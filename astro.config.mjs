@@ -39,9 +39,9 @@ export default defineConfig({
       directives: [
         "default-src 'self'",
         "object-src 'self'",
-        "connect-src 'self' https://api.web3forms.com",
+        "connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://cloudflareinsights.com",
         "base-uri 'self'",
-        "img-src 'self' https://res.cloudinary.com/dellp9a4z/ data:",
+        "img-src 'self' https://res.cloudinary.com/dellp9a4z/ https://*.google-analytics.com https://*.googletagmanager.com data:",
         "media-src 'self' https://res.cloudinary.com/dellp9a4z/",
         "font-src 'self' data:",
         "frame-src 'self' https://www.google.com/",
@@ -59,6 +59,16 @@ export default defineConfig({
           "sha256-kdaXPEOwTw3zyiuCzGv1vpohcW9SqOWq8k6gy2OWgtI=",
         ],
       },
+      scriptDirective: {
+      resources: [
+        "'self'",
+        "https://www.googletagmanager.com",
+        "https://static.cloudflareinsights.com",
+      ],
+      hashes: [
+        "sha256-88A0vPIUzNo4yqVgqnXindDUrcf5LFhdtoqbeqlwxAI=",
+      ],
+    },
     },
   },
 });
