@@ -410,7 +410,6 @@ import { SITE } from '@consts';
       submitButton.textContent = 'SENDING...';
 
       let success = false;
-      let errorDetail = '';
 
       try {
         const formData = new FormData(form);
@@ -422,18 +421,16 @@ import { SITE } from '@consts';
         const result = await response.json();
         success = response.ok && result.success === true;
         if (!success) {
-          errorDetail = `${response.status}: ${result.message ?? 'no message'}`;
           console.error('Web3Forms response:', response.status, result);
         }
       } catch (err) {
-        errorDetail = `Network/browser error: ${err}`;
         console.error('Contact form error:', err);
       }
 
       feedback.classList.toggle('is-error', !success);
       feedbackText.textContent = success
         ? "Thank you, we'll get back to you soon."
-        : `Something went wrong and your message was not sent. Please try again or email us directly. (${errorDetail})`;
+        : 'Something went wrong and your message was not sent. Please try again or email us directly.';
       feedback.hidden = false;
 
       if (success) form.reset();
